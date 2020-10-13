@@ -1,11 +1,14 @@
 // Variables used by Scriptable.
 // These must be at the very top of the file. Do not edit.
+// icon-color: blue; icon-glyph: city;
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
 // icon-color: orange icon-glyph: quote-right
 
 const User = 'USER'
 const City = 'beijing'
-const WeatherKey = '' // you can get it from https://dev.heweather.com/
-const AQIToken = '' // you can get it from https://aqicn.org/data-platform/token/#/
+const WeatherKey = 'ce704857588e4b3395978b207d52559f' // you can get it from https://dev.heweather.com/
+const AQIToken = 'f811f74c11b0aa96db8ed9ff0ceb2f7757da7591' // you can get it from https://aqicn.org/data-platform/token/#/
 
 const aqi = await getAQI()
 const lunarData = await getLunarData()
@@ -40,24 +43,24 @@ function createWidget() {
     dfTime.useMediumDateStyle()
     dfTime.useNoTimeStyle()
 
-    const Line1 = w.addText(`[🤖]Hi, ${User}. Good ${isMidnight || isMorning || isAfternoon || isEvening || isNight}`)
+    const Line1 = w.addText(` 🤖  Hi, ${User}. Good ${isMidnight || isMorning || isAfternoon || isEvening || isNight}`)
     Line1.textColor = new Color('#ffffff')
     Line1.font = new Font('Menlo', 11)
 
     const enTime = dfTime.string(time)
-    const Line2 = w.addText(`[📅]${enTime} ${lunarData}`)
+    const Line2 = w.addText(` 📅 ${enTime} ${lunarData}`)
     Line2.textColor = new Color('#C6FFDD')
     Line2.font = new Font('Menlo', 11)
 
-    const Line3 = w.addText(`[☁️]${weatherData} AQI:${aqi}`)
+    const Line3 = w.addText(` ☁️ ${weatherData} AQI:${aqi}`)
     Line3.textColor = new Color('#FBD786')
     Line3.font = new Font('Menlo', 11)
 
-    const Line4 = w.addText(`[${Device.isCharging() ? '⚡️' : '🔋'}]${renderBattery()} Battery`)
+    const Line4 = w.addText(` ${Device.isCharging() ? '⚡️' : '🔋'} ${renderBattery()} Battery`)
     Line4.textColor = new Color('#2aa876')
     Line4.font = new Font('Menlo', 11)
 
-    const Line5 = w.addText(`[🕒]${renderYearProgress()} YearProgress`)
+    const Line5 = w.addText(` 🕒 ${renderYearProgress()} YearProgress`)
     Line5.textColor = new Color('#f19c65')
     Line5.font = new Font('Menlo', 11)
 
